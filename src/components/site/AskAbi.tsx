@@ -43,7 +43,7 @@ export function AskAbi() {
   };
 
   return (
-    <Section id="ask" label="Ask Abi" title="Ask Abi." intro="Curious about my work? Ask.">
+    <Section id="ask" label="Assistant" title="Ask Abi." intro="Curious about my work? Ask.">
       <Reveal>
         <div className="mx-auto max-w-3xl overflow-hidden rounded-xl border border-border bg-surface">
           <div className="flex items-center gap-2 border-b border-border px-5 py-3">
