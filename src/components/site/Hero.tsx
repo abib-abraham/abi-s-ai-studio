@@ -21,7 +21,7 @@ export function Hero() {
 
   const ease = [0.22, 1, 0.36, 1] as const;
   const rise = (delay: number) => ({
-    initial: reduced ? undefined : { opacity: 0, y: 22 },
+    initial: (reduced ? false : { opacity: 0, y: 22 }) as false | { opacity: number; y: number },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.9, delay, ease },
   });
