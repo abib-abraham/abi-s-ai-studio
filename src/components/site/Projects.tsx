@@ -22,7 +22,7 @@ export function Projects() {
   return (
     <Section
       id="work"
-      label="Selected Work"
+      label="01 — 06 · Projects"
       title="Selected Work"
       intro="Projects where data, intelligence and engineering come together."
     >
