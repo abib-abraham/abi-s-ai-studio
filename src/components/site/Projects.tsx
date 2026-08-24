@@ -68,6 +68,21 @@ function ProjectRow({
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             {project.description}
           </p>
+          {project.results && (
+            <dl className="mt-6 flex flex-wrap gap-3">
+              {project.results.map((r) => (
+                <div
+                  key={r.label}
+                  className="rounded-lg border border-accent/30 bg-surface px-4 py-3"
+                >
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {r.label}
+                  </dt>
+                  <dd className="mt-1 text-xl font-semibold text-accent">{r.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
           <div className="mt-6 flex flex-wrap gap-2">
             {project.tech.map((t) => (
               <Tag key={t}>{t}</Tag>
@@ -113,7 +128,16 @@ function ProjectRow({
           }`}
         >
           <div className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]">
-            <ProjectVisual variant={project.visual} />
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.imageAlt ?? `${project.title} screenshot`}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <ProjectVisual variant={project.visual} />
+            )}
           </div>
         </button>
       </div>
@@ -160,8 +184,30 @@ function ProjectDialog({ project, onClose }: { project: Project; onClose: () => 
           </p>
           <h3 className="mt-3 text-3xl font-semibold tracking-tight">{project.title}</h3>
           <div className="mt-6 aspect-[16/8] overflow-hidden rounded-lg border border-border">
-            <ProjectVisual variant={project.visual} />
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={project.imageAlt ?? `${project.title} screenshot`}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <ProjectVisual variant={project.visual} />
+            )}
           </div>
+
+          {project.results && (
+            <dl className="mt-6 grid grid-cols-2 gap-3">
+              {project.results.map((r) => (
+                <div key={r.label} className="rounded-lg border border-accent/30 bg-surface-2 px-4 py-4">
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {r.label}
+                  </dt>
+                  <dd className="mt-1 text-2xl font-semibold text-accent">{r.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
 
           <Block title="Problem">{project.detail.problem}</Block>
           <Block title="Approach">{project.detail.approach}</Block>
