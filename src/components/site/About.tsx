@@ -2,8 +2,18 @@ import { Reveal, Section } from "./primitives";
 
 const meta = [
   { label: "Location", value: "Delhi NCR, India" },
-  { label: "Focus", value: "AI / ML / Data Science" },
-  { label: "Currently", value: "Student + Builder + Researcher" },
+  { label: "Studying", value: "B.Sc. Data Science & AI (Honours with Research)" },
+  { label: "Focus", value: "Machine Learning · NLP · Blockchain" },
+];
+
+const areas = [
+  "Machine Learning",
+  "NLP",
+  "Python Development",
+  "Blockchain",
+  "Smart Contracts",
+  "Full-Stack Development",
+  "Data Science",
 ];
 
 export function About() {
@@ -32,24 +42,35 @@ export function About() {
           <Reveal delay={0.05}>
             <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
               <p>
-                I&apos;m a Data Science and AI student who enjoys the part of the work that comes
-                after the experiment: turning an idea into a system that other people can actually
-                use. Most of what I build starts as a question, becomes a notebook, and then gets
-                pushed until it behaves like software.
+                I&apos;m Abi B Abraham, a Data Science &amp; AI undergraduate at CHRIST (Deemed to
+                be University), Delhi NCR, with hands-on experience across machine learning, NLP,
+                Python development, web technologies and blockchain.
               </p>
               <p>
-                My interests sit across artificial intelligence, machine learning and natural
-                language processing — with a steady pull towards research. I&apos;ve spent time on
-                extracting structure from legal text, on decentralised accountability in Federated
-                Learning, and on full-stack applications where the data model matters as much as
-                the model itself.
+                I&apos;m interested in applying AI and data science to practical systems — models
+                that end up inside something usable — while continuing to explore
+                research-oriented problems, currently around accountability in Federated Learning.
               </p>
               <p>
-                I care about clarity: readable code, honest evaluation, and interfaces that explain
-                what a system is doing. I&apos;m still early in my career and learning quickly —
-                which is exactly why I keep shipping.
+                Most of what I build starts as a question, becomes a notebook, and then gets pushed
+                until it behaves like software. I care about clarity: readable code, honest
+                evaluation, and interfaces that explain what a system is doing.
               </p>
             </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <h3 className="eyebrow mt-10">Areas of work</h3>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {areas.map((a) => (
+                <li
+                  key={a}
+                  className="rounded-full border border-border px-3.5 py-1.5 text-sm text-muted-foreground"
+                >
+                  {a}
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </div>

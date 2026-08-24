@@ -64,17 +64,18 @@ export function ProjectVisual({ variant }: { variant: Project["visual"] }) {
             <circle cx="222" cy="98" r="26" opacity="0.5" />
           </g>
         )}
-        {variant === "vision" && (
+        {variant === "contract" && (
           <g fill="none" stroke={stroke} strokeWidth="1">
-            <rect x="40" y="46" width="110" height="70" rx="3" opacity="0.85" />
-            <rect x="176" y="86" width="86" height="54" rx="3" opacity="0.4" />
-            <line x1="40" y1="160" x2="280" y2="160" opacity="0.25" strokeDasharray="6 8" />
-            <text x="40" y="38" fontSize="9" fill="currentColor" stroke="none" opacity="0.8">
-              0.94
-            </text>
-            <text x="176" y="78" fontSize="9" fill="currentColor" stroke="none" opacity="0.5">
-              0.61
-            </text>
+            <rect x="46" y="34" width="96" height="132" rx="4" opacity="0.55" />
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <line key={i} x1="60" y1={54 + i * 20} x2={124 - (i % 3) * 18} y2={54 + i * 20} opacity="0.3" />
+            ))}
+            <circle cx="222" cy="70" r="9" fill="currentColor" opacity="0.8" />
+            <circle cx="256" cy="120" r="9" fill="currentColor" opacity="0.5" />
+            <circle cx="200" cy="146" r="9" fill="currentColor" opacity="0.5" />
+            <line x1="222" y1="70" x2="256" y2="120" opacity="0.35" />
+            <line x1="222" y1="70" x2="200" y2="146" opacity="0.35" />
+            <line x1="142" y1="100" x2="210" y2="80" opacity="0.3" strokeDasharray="4 6" />
           </g>
         )}
         {variant === "tokens" && (

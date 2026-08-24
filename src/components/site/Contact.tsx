@@ -1,10 +1,7 @@
 import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import { Reveal } from "./primitives";
 
-/** TODO: replace placeholders with real destinations. */
-const EMAIL = "#"; // e.g. "mailto:you@example.com"
-const LINKEDIN = "#"; // e.g. "https://linkedin.com/in/…"
-const GITHUB = "#"; // e.g. "https://github.com/…"
+import { EMAIL_URL as EMAIL, GITHUB_URL as GITHUB, LINKEDIN_URL as LINKEDIN } from "@/data/links";
 
 export function Contact() {
   return (
@@ -53,7 +50,7 @@ export function Contact() {
         <div className="mx-auto flex w-full max-w-[1240px] flex-col gap-6 px-5 py-10 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12">
           <div>
             <p className="font-mono text-[13px] tracking-[0.18em]">ABI ABRAHAM</p>
-            <p className="mt-2 text-sm text-muted-foreground">Data Science × AI × Building</p>
+            <p className="mt-2 text-sm text-muted-foreground">Data Science × AI × Blockchain</p>
           </div>
           <nav aria-label="Footer" className="flex gap-6 text-sm text-muted-foreground">
             <a href={GITHUB} className="transition-colors hover:text-foreground">

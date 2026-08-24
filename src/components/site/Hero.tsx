@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowDown, ArrowUpRight, FileText } from "lucide-react";
+import { RESUME_URL } from "@/data/links";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -65,8 +66,8 @@ export function Hero() {
           {...rise(0.24)}
           className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          I&apos;m Abi B Abraham — a Data Science &amp; AI builder focused on machine learning, NLP,
-          intelligent systems and real-world products.
+          Data Science &amp; AI undergraduate building practical systems across machine learning,
+          NLP, software development and blockchain.
         </motion.p>
 
         <motion.div {...rise(0.34)} className="mt-10 flex flex-wrap items-center gap-3">
@@ -84,7 +85,9 @@ export function Hero() {
             Let&apos;s Connect
           </a>
           <a
-            href="#contact"
+            href={RESUME_URL}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-2 px-2 py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <FileText size={15} />
@@ -98,7 +101,7 @@ export function Hero() {
         >
           <p className="flex items-center gap-3 text-sm text-muted-foreground">
             <span className="status-dot inline-block h-2 w-2 rounded-full bg-success" aria-hidden />
-            Available for opportunities
+            Open to AI / ML &amp; Data Science opportunities
           </p>
           <p className="hidden font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground sm:block">
             Delhi NCR, India

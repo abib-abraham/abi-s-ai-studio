@@ -1,113 +1,83 @@
-import { Reveal, Section } from "./primitives";
-
-type Entry = {
-  kind: string;
-  title: string;
-  org: string;
-  period: string;
-  body: string;
-  placeholder?: boolean;
-};
-
-/**
- * Only verified information is listed. Entries marked `placeholder` are
- * editable slots — fill in real details in this array, do not invent them.
- */
-const entries: Entry[] = [
-  {
-    kind: "Research",
-    title: "Decentralized Accountability in Federated Learning",
-    org: "Independent research project",
-    period: "Ongoing",
-    body: "Exploring blockchain-backed contribution records and smart-contract reputation as an accountability layer for Federated Learning.",
-  },
-  {
-    kind: "Project",
-    title: "Legal Argument Extractor",
-    org: "AI / NLP build",
-    period: "Recent",
-    body: "Designed and built an NLP pipeline that extracts and organises arguments from legal documents.",
-  },
-  {
-    kind: "Project",
-    title: "Uni-Rent",
-    org: "Full-stack web application",
-    period: "Recent",
-    body: "Built a student-focused self-drive vehicle rental platform connecting students directly with vehicle owners.",
-  },
-  {
-    kind: "Academic",
-    title: "Data Science & AI coursework",
-    org: "Christ (Deemed to be University)",
-    period: "Ongoing",
-    body: "Machine learning, natural language processing, statistics, databases and applied analytics.",
-  },
-  {
-    kind: "Internship",
-    title: "[Add internship role]",
-    org: "[Add organisation]",
-    period: "[Add dates]",
-    body: "Editable placeholder — replace with real internship details when available.",
-    placeholder: true,
-  },
-];
-
-const education = [
-  {
-    institution: "Christ (Deemed to be University)",
-    program: "Data Science / AI",
-    note: "Dates, grades and honours intentionally left out until confirmed.",
-  },
-];
-
-const achievements = [
-  {
-    category: "Research",
-    body: "Independent research on decentralized accountability in Federated Learning.",
-  },
-  {
-    category: "Projects",
-    body: "Six shipped projects spanning NLP, computer vision, full-stack development and analytics.",
-  },
-  {
-    category: "Sports / Leadership",
-    body: "[Add verified achievement]",
-    placeholder: true,
-  },
-];
+import {
+  certifications,
+  education,
+  experience,
+  leadership,
+  metrics,
+  academicWork,
+} from "@/data/portfolio";
+import { Reveal, Section, Tag } from "./primitives";
 
 export function Experience() {
   return (
     <Section id="experience" label="Experience" title="A working timeline.">
       <div className="grid gap-14 md:grid-cols-12 md:gap-16">
         <div className="md:col-span-7">
-          <ol className="relative border-l border-border pl-6 sm:pl-8">
-            {entries.map((e, i) => (
-              <li key={e.title} className="relative pb-10 last:pb-0">
+          <h3 className="eyebrow">Internships</h3>
+          <ol className="relative mt-6 border-l border-border pl-6 sm:pl-8">
+            {experience.map((e, i) => (
+              <li key={e.role} className="relative pb-10 last:pb-0">
                 <span
                   aria-hidden
-                  className={`absolute -left-[calc(1.5rem+4.5px)] top-1.5 h-2 w-2 rounded-full sm:-left-[calc(2rem+4.5px)] ${
-                    e.placeholder ? "bg-border-strong" : "bg-accent"
-                  }`}
+                  className="absolute -left-[calc(1.5rem+4.5px)] top-1.5 h-2 w-2 rounded-full bg-accent sm:-left-[calc(2rem+4.5px)]"
                 />
                 <Reveal delay={0.03 * i}>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
-                      {e.kind}
-                    </span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                      {e.period}
-                    </span>
-                  </div>
-                  <h3 className="mt-2 text-lg font-medium">{e.title}</h3>
-                  <p className="text-sm text-muted-foreground">{e.org}</p>
-                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                    {e.body}
-                  </p>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {e.period}
+                  </span>
+                  <h4 className="mt-2 text-lg font-medium">{e.role}</h4>
+                  <p className="text-sm text-accent">{e.org}</p>
+                  <ul className="mt-3 max-w-xl space-y-2">
+                    {e.points.map((p) => (
+                      <li key={p} className="text-sm leading-relaxed text-muted-foreground">
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
                 </Reveal>
               </li>
             ))}
           </ol>
+
+          <Reveal>
+            <h3 className="eyebrow mt-14">Leadership</h3>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              {leadership.map((l) => (
+                <div key={l.role} className="rounded-lg border border-border p-5">
+                  {l.period && (
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                      {l.period}
+                    </span>
+                  )}
+                  <p className="mt-2 text-base font-medium">{l.role}</p>
+                  <p className="mt-1 text-sm text-accent">{l.org}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{l.body}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <h3 className="eyebrow mt-14">Academic &amp; Technical Work</h3>
+            <div className="mt-6 space-y-4">
+              {academicWork.map((w) => (
+                <div key={w.id} className="rounded-lg border border-border p-5">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {w.category}
+                  </span>
+                  <p className="mt-2 text-base font-medium">{w.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {w.description}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {w.tech.map((t) => (
+                      <Tag key={t}>{t}</Tag>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
 
         <div className="md:col-span-5">
@@ -117,29 +87,36 @@ export function Experience() {
               {education.map((ed) => (
                 <div key={ed.institution} className="rounded-lg border border-border p-5">
                   <p className="text-base font-medium">{ed.institution}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{ed.program}</p>
-                  <p className="mt-3 text-xs text-muted-foreground">{ed.note}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{ed.program}</p>
+                  <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                    {ed.period}
+                  </p>
                 </div>
               ))}
             </div>
           </Reveal>
 
-          <Reveal delay={0.08}>
-            <h3 className="eyebrow mt-12">Achievements</h3>
+          <Reveal delay={0.06}>
+            <h3 className="eyebrow mt-12">Certifications</h3>
             <ul className="mt-5 space-y-px overflow-hidden rounded-lg border border-border bg-border">
-              {achievements.map((a) => (
-                <li key={a.category} className="bg-background px-5 py-4">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                    {a.category}
-                  </p>
-                  <p
-                    className={`mt-2 text-sm ${a.placeholder ? "text-muted-foreground" : "text-foreground"}`}
-                  >
-                    {a.body}
-                  </p>
+              {certifications.map((c) => (
+                <li key={c} className="bg-background px-5 py-4 text-sm text-foreground">
+                  {c}
                 </li>
               ))}
             </ul>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <h3 className="eyebrow mt-12">By the numbers</h3>
+            <dl className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border">
+              {metrics.map((m) => (
+                <div key={m.value + m.label} className="bg-background px-5 py-5">
+                  <dt className="text-2xl font-semibold text-accent">{m.value}</dt>
+                  <dd className="mt-2 text-xs leading-relaxed text-muted-foreground">{m.label}</dd>
+                </div>
+              ))}
+            </dl>
           </Reveal>
         </div>
       </div>

@@ -5,11 +5,12 @@ import { Reveal, Section } from "./primitives";
 import { answerLocally, type ChatMessage } from "@/lib/ask-abi";
 
 const suggestions = [
-  "What projects has Abi built?",
-  "What does Abi know about NLP?",
-  "Tell me about his Federated Learning research.",
-  "What technologies does Abi use?",
-  "What kind of opportunities is Abi looking for?",
+  "What internships has Abi completed?",
+  "Tell me about the Ham, Spam & Smishing project.",
+  "What blockchain projects has Abi built?",
+  "What is Uni-Rent?",
+  "Tell me about Abi's Federated Learning research.",
+  "What leadership experience does Abi have?",
 ];
 
 export function AskAbi() {
@@ -17,7 +18,7 @@ export function AskAbi() {
     {
       role: "assistant",
       content:
-        "Hi — I'm a demo assistant trained on Abi's portfolio content. Ask about his projects, research, skills or what he's looking for.",
+        "Hi — I'm a demo assistant trained on Abi's portfolio content. Ask about his education, internships, projects, research, skills, leadership or certifications.",
     },
   ]);
   const [input, setInput] = useState("");
